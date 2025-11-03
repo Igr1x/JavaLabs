@@ -14,8 +14,8 @@ public class Acc {
     private int totalFurniture;
     private double minArea = Double.POSITIVE_INFINITY;
     private double maxArea = Double.NEGATIVE_INFINITY;
-    private Map<String, Integer> countByType = new HashMap<>();
-    private Map<String, Integer> roomsByBuilding = new HashMap<>();
+    private final Map<String, Integer> countByType = new HashMap<>();
+    private final Map<String, Integer> roomsByBuilding = new HashMap<>();
 
     public void addRoom(Room room) {
         totalRooms++;

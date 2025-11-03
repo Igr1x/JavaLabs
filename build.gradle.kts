@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("me.champeau.jmh") version("0.7.3")
 }
 
 group = "ru.varnavskii"
@@ -16,6 +17,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.42")
     testCompileOnly("org.projectlombok:lombok:1.18.42")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
+    testImplementation("org.openjdk.jmh:jmh-core:1.37")
 }
 
 tasks.test {

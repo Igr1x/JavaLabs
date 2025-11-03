@@ -27,7 +27,7 @@ public class RoomStatsPerformanceTest {
             System.out.printf("Iterative: %d ms\n", time);
 
             start = Instant.now();
-            stats = RoomStatsCalc.standardStream(rooms);
+            stats = RoomStatsCalc.standardStream(rooms, 0);
             end = Instant.now();
             time = Duration.between(start, end).toMillis();
 

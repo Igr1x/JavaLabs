@@ -2,6 +2,7 @@ package ru.varnavskii.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.SneakyThrows;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,4 +19,10 @@ public class Room {
     private List<Furniture> furniture;
     private double area;
     private boolean hasWindow;
+
+    @SneakyThrows
+    public RoomType getRoomType(long delay) {
+        Thread.sleep(delay);
+        return this.type;
+    }
 }
