@@ -22,13 +22,6 @@ import java.util.function.Consumer;
             if (current >= rooms.size()) return false;
 
             Room room = rooms.get(current++);
-            if (delay > 0) {
-                try {
-                    Thread.sleep(delay);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
             action.accept(room);
             return true;
         }

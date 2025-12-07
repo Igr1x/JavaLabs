@@ -34,25 +34,25 @@ public class RoomStatsCollector implements Collector<Room, Acc, RoomStats> {
     @Override
     public Function<Acc, RoomStats> finisher() {
         return acc -> {
-            double avgArea = acc.getTotalRooms() == 0
+            double avgArea = acc.getTotalRooms().intValue() == 0
                     ? 0
-                    : acc.getTotalArea() / acc.getTotalRooms();
-            int avgFurniture = acc.getTotalRooms() == 0
+                    : acc.getTotalArea().doubleValue() / acc.getTotalRooms().intValue();
+            int avgFurniture = acc.getTotalRooms().intValue() == 0
                     ? 0
-                    : (int) Math.round((double) acc.getTotalFurniture() / acc.getTotalRooms());
-            double percentWithWindows = acc.getTotalRooms() == 0
+                    : (int) Math.round((double) acc.getTotalFurniture().intValue() / acc.getTotalRooms().intValue());
+            double percentWithWindows = acc.getTotalRooms().intValue() == 0
                     ? 0
-                    : ((double) acc.getRoomsWithWindows() / acc.getTotalRooms()) * 100;
+                    : ((double) acc.getRoomsWithWindows().intValue() / acc.getTotalRooms().intValue()) * 100;
 
             return new RoomStats(
                     avgArea,
-                    acc.getRoomsWithWindows(),
+                    acc.getRoomsWithWindows().intValue(),
                     avgFurniture,
                     acc.getCountByType(),
                     percentWithWindows,
-                    acc.getTotalFurniture(),
-                    acc.getMinArea() == Double.POSITIVE_INFINITY ? 0 : acc.getMinArea(),
-                    acc.getMaxArea() == Double.NEGATIVE_INFINITY ? 0 : acc.getMaxArea(),
+                    acc.getTotalFurniture().intValue(),
+                    acc.getMinArea().doubleValue() == Double.POSITIVE_INFINITY ? 0 : acc.getMinArea().doubleValue(),
+                    acc.getMaxArea().doubleValue() == Double.NEGATIVE_INFINITY ? 0 : acc.getMaxArea().doubleValue(),
                     acc.getRoomsByBuilding()
             );
         };
@@ -60,6 +60,6 @@ public class RoomStatsCollector implements Collector<Room, Acc, RoomStats> {
 
     @Override
     public Set<Characteristics> characteristics() {
-        return Set.of();
+        return Set.of(Characteristics.CONCURRENT);
     }
 }
